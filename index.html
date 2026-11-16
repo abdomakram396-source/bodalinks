@@ -3,30 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بودا | كل روابطي</title>
+<title>Boda Links - اعمل صفحتك في ثانية بس</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#000,#1a1a1a);color:#fff;text-align:center;padding:30px 15px;min-height:100vh}
-.profile-img{width:120px;height:120px;border-radius:50%;border:4px solid #00ffcc;object-fit:cover;box-shadow:0 0 25px #00ffcc66}
-h1{margin:12px 0 5px;font-size:28px}
-.bio{color:#bbb;margin:0 0 25px;font-size:16px}
-.link{display:flex;align-items:center;justify-content:center;gap:10px;background:#222;color:#fff;text-decoration:none;padding:17px;margin:13px auto;max-width:420px;border-radius:16px;font-size:18px;font-weight:bold;border:1px solid #333;transition:0.2s}
-.link:hover{background:#00ffcc;color:#000;transform:scale(1.02)}
-.footer{margin-top:30px;color:#777;font-size:13px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#080208;min-height:100vh;color:white;padding:20px 10px;overflow-x:hidden}
+.card{width:400px;max-width:95%;margin:0 auto;text-align:center;padding:25px 18px;background:#14050c;border-radius:28px;border:2px solid #ff2d20;box-shadow:0 0 30px #ff2d20;position:relative;z-index:2}
+h1{font-size:42px;text-shadow:0 0 20px #ff2d20}
+.sub{color:#fff;margin:8px 0 20px;font-size:17px;font-weight:bold}
+input{width:100%;padding:14px;margin:8px 0;border-radius:14px;border:2px solid #555;background:#1a1a1a;color:#fff;font-size:16px;outline:none}
+input::placeholder{color:#bbb}
+label{font-size:15px;color:#ffcc00;display:block;text-align:right;margin-top:10px;font-weight:bold}
+.btn{width:100%;padding:15px;border:none;border-radius:16px;font-weight:bold;font-size:19px;cursor:pointer;margin-top:15px}
+.btn-create{background:linear-gradient(45deg,#ff2d20,#ff6a00,#ffe600);color:#000}
+.btn-link{color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;padding:16px;border-radius:16px;margin:10px 0;font-weight:bold;font-size:19px}
+.btn-ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+.btn-tk{background:#111;border:2px solid #25F4EE}
+.btn-fb{background:#1877F2}
+.btn-wa{background:#25D366}
+.btn-electric{background:linear-gradient(45deg,#004cff,#00e5ff,#fff);color:#000;font-size:20px}
+.btn-fire{background:linear-gradient(45deg,#ff2d20,#ff6a00);color:#fff;font-size:20px}
+.avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #ff2d20;box-shadow:0 0 25px #ff2d20;margin:0 auto;display:block;background:#222}
+.preview{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #ff2d20;margin:10px auto;display:none}
+.uploadBox{border:2px dashed #ff2d20;border-radius:16px;padding:18px;margin:10px 0;cursor:pointer;background:#1a0505}
+.hidden{display:none}
+#flash{position:fixed;top:0;left:0;width:100%;height:100%;background:white;opacity:0;pointer-events:none;z-index:999}
+#flash.on{opacity:1;background:radial-gradient(circle,#fff,#00e5ff,#004cff)}
+.small{font-size:12px;color:#ccc;margin-top:10px;word-break:break-all}
+.colors{display:flex;gap:8px;justify-content:center;margin:10px 0}
+.color{width:40px;height:40px;border-radius:50%;cursor:pointer;border:3px solid transparent}
+.color.sel{border-color:#fff;transform:scale(1.15)}
+.fire{position:fixed;bottom:-10px;pointer-events:none;z-index:1;animation:up 1.2s ease-out forwards;border-radius:50%}
+@keyframes up{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-100vh) scale(0);opacity:0}}
+.shake{animation:shake 0.4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-5px)}}
 </style>
 </head>
 <body>
-<img class="profile-img" src="https://via.placeholder.com/200" alt="بودا">
-<h1>بودا 🔥</h1>
-<p class="bio">اهلا بيك في صفحتي الرسمية ❤️<br>كل روابطي هنا 👇</p>
-
-<a class="link" href="https://facebook.com">📘 فيسبوك</a>
-<a class="link" href="https://instagram.com">📸 انستجرام</a>
-<a class="link" href="https://tiktok.com">🎵 تيك توك</a>
-<a class="link" href="https://youtube.com">▶️ يوتيوب</a>
-<a class="link" href="https://wa.me/201000000000">💬 واتساب</a>
-<a class="link" href="https://t.me/">✈️ تليجرام</a>
-
-<p class="footer">Made by Boda © 2026</p>
+<div id="flash"></div>
+<div class="card" id="createPage">
+<h1>🔥 Boda Links 🔥</h1>
+<p class="sub">اعمل صفحتك في ثانية بس - مجانا</p>
+<label>اسمك</label>
+<input id="name" placeholder="اكتب اسمك هنا">
+<label>اسمك بالانجليزي للينك</label>
+<input id="username" placeholder="اكتب اسمك بالانجليزي">
+<label>صورتك</label>
+<div class="uploadBox" onclick="document.getElementById('fileImg').click()"><span style="font-size:40px">📸</span><br><b style="font-size:18px">دوس هنا واختار صورتك من الموبايل</b><br><small style="color:#ddd">من الاستوديو على طول</small></div>
+<input type="file" id="fileImg" accept="image/*" style="display:none" onchange="loadImg(event)">
+<img id="preview" class="preview" src="">
+<p id="imgDone" style="color:#00ff00;font-weight:bold;display:none">✅ صورتك اتحطت تمام</p>
+<label>لون صفحتك</label>
+<div class="colors">
+<div class="color sel" style="background:#ff2d20" data-c="#ff2d20" onclick="pickColor(this)"></div>
+<div class="color" style="background:#00e5ff" data-c="#00e5ff" onclick="pickColor(this)"></div>
+<div class="color" style="background:#25D366" data-c="#25D366" onclick="pickColor(this)"></div>
+<div class="color" style="background:#ee2a7b" data-c="#ee2a7b" onclick="pickColor(this)"></div>
+<div class="color" style="background:#ffe600" data-c="#ffe600" onclick="pickColor(this)"></div>
+</div>
+<label>انستجرام</label>
+<input id="ig" placeholder="اكتب اسمك على انستجرام">
+<label>تيك توك</label>
+<input id="tk" placeholder="اكتب اسمك على تيك توك">
+<label>فيسبوك</label>
+<input id="fb" placeholder="حط لينك الفيسبوك بتاعك">
+<label>واتساب - رقمك بس</label>
+<input id="wa" placeholder="اكتب رقم الواتساب">
+<button class="btn btn-create" onclick="createPage()">🚀 اعمل صفحتي 🚀</button>
+<p class="small">Boda Links 👑 - اعمل صفحتك في ثانية بس</p>
+</div>
+<div class="card hidden" id="viewPage">
+<img id="vImg" class="avatar" src="">
+<h1 id="vName" style="font-size:50px;margin-top:10px"></h1>
+<p id="vUser" style="color:#ffcc00"></p>
+<p style="margin:10px 0">🔥 🔥 🔥</p>
+<button class="btn btn-electric" onclick="electric()">⚡ دوس هنا هتتكهرب ⚡</button>
+<button class="btn btn-fire" onclick="explodeFire()">🔥 ولعها 🔥</button>
+<div id="links"></div>
+<button class="btn" style="background:#222;color:#fff" onclick="goHome()">+ اعمل صفحتك في ثانية بس</button>
+<p class="small">Made with Boda Links 🔥</p>
+</div>
+<script>
+let selColor = "#ff2d20";
+let userImg = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+function loadImg(e){
+  let file = e.target.files[0];
+  if(!file) return;
+  let reader = new FileReader();
+  reader.onload = function(ev){
+    userImg = ev.target.result;
+    let p = document.getElementById('preview');
+    p.src = userImg; p.style.display='block';
+    document.getElementById('imgDone').style.display='block';
+  };
+  reader.readAsDataURL(file);
+}
+function pickColor(el){
+  document.querySelectorAll('.color').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  selColor = el.dataset.c;
+}
+function fixLink(val, type){
+  if(!val) return "";
+  val = val.trim();
+  if(val.startsWith("http")) return val;
+  if(type=="ig") return "https://instagram.com/" + val.replace("@","");
+  if(type=="tk") return "https://www.tiktok.com/@" + val.replace("@","");
+  return val;
+}
+function createPage(){
+  let data = {
+    name: document.getElementById('name').value || "Boda",
+    user: document.getElementById('username').value || "boda",
+    img: userImg,
+    color: selColor,
+    ig: fixLink(document.getElementById('ig').value, "ig"),
+    tk: fixLink(document.getElementById('tk').value, "tk"),
+    fb: fixLink(document.getElementById('fb').value, "fb"),
+    wa: document.getElementById('wa').value,
+  };
+  if(data.img.length > 5000){
+    localStorage.setItem("boda_img_"+data.user, data.img);
+    data.img = "local:"+data.user;
+  }
+  let code = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  let link = location.href.split('#')[0].split('?')[0] + "#" + code;
+  showPage(data);
+  let div = document.createElement('div');
+  div.innerHTML = `<p style="margin-top:15px;color:#00ff00;font-weight:bold">صفحتك اتعملت! انسخ اللينك ده وابعته لصحابك 👇</p>
+  <input id="copyLink" value="${link}" readonly style="font-size:12px">
+  <button class="btn" style="background:#25D366" onclick="copyL()">📋 انسخ اللينك</button>`;
+  document.getElementById('viewPage').appendChild(div);
+  history.replaceState(null,"", link);
+}
+function copyL(){
+  let i=document.getElementById('copyLink'); i.select(); document.execCommand('copy'); alert('اتنسخ يا بطل 🔥 ابعته لصحابك');
+}
+function showPage(data){
+  document.getElementById('createPage').classList.add('hidden');
+  document.getElementById('viewPage').classList.remove('hidden');
+  document.getElementById('vName').innerText = data.name;
+  document.getElementById('vUser').innerText = "@" + data.user;
+  let imgSrc = data.img;
+  if(imgSrc && imgSrc.startsWith("local:")){
+    let saved = localStorage.getItem("boda_img_"+imgSrc.replace("local:",""));
+    if(saved) imgSrc = saved;
+    else imgSrc = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+  }
+  document.getElementById('vImg').src = imgSrc;
+  let html="";
+  if(data.ig) html+=`<a class="btn-link btn-ig" href="${data.ig}" target="_blank">📸 Instagram</a>`;
+  if(data.tk) html+=`<a class="btn-link btn-tk" href="${data.tk}" target="_blank">🎵 Tiktok</a>`;
+  if(data.fb) html+=`<a class="btn-link btn-fb" href="${data.fb}" target="_blank">👍 Facebook</a>`;
+  if(data.wa) html+=`<a class="btn-link btn-wa" href="https://wa.me/${data.wa}" target="_blank">💬 Whatsapp</a>`;
+  document.getElementById('links').innerHTML = html;
+}
+function goHome(){ location.hash=""; location.reload(); }
+if(location.hash.length > 10){
+  try{
+    let data = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));
+    showPage(data);
+  }catch(e){}
+}
+function electric(){
+  let f=document.getElementById('flash');
+  f.classList.add('on'); setTimeout(()=>f.classList.remove('on'),100);
+  setTimeout(()=>f.classList.add('on'),200); setTimeout(()=>f.classList.remove('on'),300);
+  if(navigator.vibrate) navigator.vibrate([30,30,30,30,100]);
+  try{
+    let ctx=new (window.AudioContext||window.webkitAudioContext)();
+    let o=ctx.createOscillator(), g=ctx.createGain(); o.connect(g); g.connect(ctx.destination);
+    o.type='sawtooth'; o.frequency.setValueAtTime(2000,ctx.currentTime); o.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.5);
+    g.gain.setValueAtTime(0.3,ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.5);
+    o.start(); o.stop(ctx.currentTime+0.5);
+  }catch(e){}
+}
+function explodeFire(){
+  document.getElementById('viewPage').classList.add('shake');
+  setTimeout(()=>document.getElementById('viewPage').classList.remove('shake'),500);
+  if(navigator.vibrate) navigator.vibrate([100,50,100,50,200]);
+  let colors = ['#ff2d20','#ff6a00','#ffe600','#ff0000','#ff9500'];
+  for(let i=0;i<60;i++){
+    setTimeout(()=>{
+      let d=document.createElement('div');
+      d.className='fire';
+      let s = 10 + Math.random()*30;
+      d.style.width=s+'px'; d.style.height=s+'px';
+      d.style.left = Math.random()*100+'vw';
+      d.style.background = colors[Math.floor(Math.random()*colors.length)];
+      d.style.boxShadow = '0 0 20px '+d.style.background;
+      document.body.appendChild(d);
+      setTimeout(()=>d.remove(),1300);
+    }, i*20);
+  }
+}
+</script>
 </body>
 </html>
