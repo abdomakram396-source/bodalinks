@@ -1,17 +1,169 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Boda Links</title><style>*{box-sizing:border-box}body{margin:0;color:#fff;font-family:system-ui;background:#000;overflow-x:hidden}body::before{content:'';position:fixed;inset:0;background:linear-gradient(45deg,#ff0055,#ffaa00,#00e5ff,#00ff88,#a100ff,#ff0055);background-size:400% 400%;animation:bg 8s linear infinite;opacity:.22;z-index:0}@keyframes bg{0%{background-position:0% 50%}100%{background-position:400% 50%}}canvas{position:fixed;inset:0;pointer-events:none;z-index:1;display:none}.wrap{max-width:520px;margin:auto;padding:16px;position:relative;z-index:2}.logo{text-align:center;font-size:38px;font-weight:900;text-shadow:0 0 20px #00e5ff,0 0 40px #ff0055}.logo span{color:#00e5ff}.counter{background:linear-gradient(90deg,#ff0055,#ffaa00,#00ff88);background-size:200%;animation:bg 3s linear infinite;padding:13px;border-radius:14px;text-align:center;font-weight:900;margin:12px 0}.card{background:rgba(20,20,20,.92);border:2px solid #00e5ff;border-radius:20px;padding:16px}.row{display:flex;align-items:center;gap:10px;background:#1c1c1c;padding:12px;margin:8px 0;border-radius:14px;border:1px solid #333}.row img{width:42px;height:42px;border-radius:10px;background:#fff;padding:3px}.row b{flex:1}.btn{background:linear-gradient(90deg,#00e5ff,#00ff88);color:#000;border:0;padding:16px;border-radius:16px;width:100%;font-weight:900;font-size:18px;margin-top:10px;cursor:pointer}.btn2{background:#fff}.link{display:flex;align-items:center;gap:12px;padding:15px;border-radius:16px;margin:10px 0;color:#fff;text-decoration:none;font-weight:900;font-size:17px;border:2px solid #fff;box-shadow:0 0 18px currentColor}.link img{width:38px;height:38px;border-radius:8px;background:#fff;padding:2px}.avatarWrap{width:150px;height:150px;border-radius:50%;border:4px solid #00ff88;margin:12px auto;overflow:hidden;box-shadow:0 0 30px #00ff88;background:#222}.avatarWrap img{width:100%;height:100%;object-fit:cover}.avatarTxt{width:150px;height:150px;border-radius:50%;border:4px solid #00ff88;margin:12px auto;background:#222;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:900}.nameBig{font-size:42px;font-weight:900;text-align:center;background:linear-gradient(90deg,#ff0055,#ffaa00,#00ff88,#00e5ff,#ff0055);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:bg 3s linear infinite;text-shadow:0 0 30px #ff0055;letter-spacing:1px;margin:8px 0}.phraseMarquee{border:4px solid #00ff88;border-radius:16px;padding:0;margin:12px 0;background:#002a12;box-shadow:0 0 25px #00ff88;overflow:hidden;white-space:nowrap}.phraseTrack{display:inline-block;padding:14px 0;color:#00ff88;font-size:24px;font-weight:900;text-shadow:0 0 10px #00ff88,0 0 25px #00ff88;animation:move 12s linear infinite}@keyframes move{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}input,select{width:100%;padding:13px;border-radius:12px;border:1px solid #444;background:#0a0a0a;color:#fff;margin:6px 0}.upload{border:2px dashed #00e5ff;padding:14px;border-radius:14px;text-align:center;background:#0a1a20}.previewWrap{width:120px;height:120px;border-radius:50%;overflow:hidden;margin:10px auto;border:3px solid #00ff88;display:none}.previewWrap img{width:100%;height:100%;object-fit:cover}.skull{position:fixed;font-size:32px;z-index:2;pointer-events:none;animation:floatSkull 4s ease-in-out infinite}@keyframes floatSkull{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-25px) rotate(10deg)}}.fire{position:fixed;bottom:-20px;font-size:28px;z-index:2;pointer-events:none;animation:fireUp 3s linear infinite}@keyframes fireUp{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-110vh) scale(1.6);opacity:0}}</style></head><body><div id="skulls"></div><div id="fires"></div><canvas id="fx"></canvas><div class="wrap" id="app"></div><script>
-const SOCIALS=[{k:'t',id:'tiktok',name:'TikTok',logo:'https://cdn.simpleicons.org/tiktok/ffffff',color:'#ff0055',base:'https://www.tiktok.com/@'},{k:'i',id:'instagram',name:'Instagram',logo:'https://cdn.simpleicons.org/instagram/E1306C',color:'#ff2a9d',base:'https://instagram.com/'},{k:'f',id:'facebook',name:'Facebook',logo:'https://cdn.simpleicons.org/facebook/1877F2',color:'#1877F2',base:'https://facebook.com/'},{k:'w',id:'whatsapp',name:'WhatsApp',logo:'https://cdn.simpleicons.org/whatsapp/25D366',color:'#25D366',base:'https://wa.me/'},{k:'y',id:'youtube',name:'YouTube',logo:'https://cdn.simpleicons.org/youtube/FF0000',color:'#FF0000',base:'https://youtube.com/@'},{k:'s',id:'snapchat',name:'Snapchat',logo:'https://cdn.simpleicons.org/snapchat/FFFC00',color:'#FFFC00',base:'https://snapchat.com/add/'},{k:'e',id:'telegram',name:'Telegram',logo:'https://cdn.simpleicons.org/telegram/26A5E4',color:'#26A5E4',base:'https://t.me/'},{k:'x',id:'x',name:'X - Twitter',logo:'https://cdn.simpleicons.org/x/ffffff',color:'#ffffff',base:'https://x.com/'}];
-const PHRASES=["I AM THE KING 👑","BODA IS HERE 🔥","NO ONE LIKE ME 💪","BORN TO BE LEGEND ✨","TOP OF THE GAME 🏆","I RUN THIS CITY ⚡","LEGEND NEVER DIES 🔥","KING OF LINKS 👑","WATCH ME SHINE 💎","I AM UNSTOPPABLE 🚀"];
-const VIBES=[{k:'m',id:'music',name:'Music - اغنية',icon:'🎵'},{k:'h',id:'shakePhoto',name:'Shake Photo - صورتك تتهز',icon:'📸'},{k:'n',id:'snow',name:'Snow - تلج',icon:'❄️'},{k:'r',id:'fire',name:'Fire - نار',icon:'🔥'}];
-let userPhoto=localStorage.getItem('boda_my_photo')||'',photoZoom=100,photoPos='center';
-function makeSkullsFires(){let s=document.getElementById('skulls');let f=document.getElementById('fires');s.innerHTML='';f.innerHTML='';for(let i=0;i<8;i++){let d=document.createElement('div');d.className='skull';d.innerHTML='💀';d.style.left=(Math.random()*90)+'%';d.style.top=(10+Math.random()*70)+'%';d.style.animationDelay=(Math.random()*3)+'s';s.appendChild(d)}for(let i=0;i<14;i++){let d=document.createElement('div');d.className='fire';d.innerHTML=Math.random()>0.5?'🔥':'🔥';d.style.left=(Math.random()*95)+'%';d.style.animationDelay=(Math.random()*3)+'s';d.style.animationDuration=(2+Math.random()*2)+'s';f.appendChild(d)}}
-const cv=document.getElementById('fx'),ctx=cv.getContext('2d');function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();let ps=[];for(let i=0;i<120;i++)ps.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,s:Math.random()*4+2,sp:Math.random()*4+1.5});let fxRun=false;function startFX(m){cv.style.display='block';if(fxRun)return;fxRun=true;(function loop(){ctx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.y+=p.sp;if(p.y>cv.height){p.y=-10;p.x=Math.random()*innerWidth}ctx.fillStyle=m==='snow'?'#fff':(Math.random()>0.5?'#ff5500':'#ffaa00');ctx.shadowBlur=15;ctx.shadowColor=ctx.fillStyle;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,7);ctx.fill()});requestAnimationFrame(loop)})()}
-function getData(){try{let h=location.hash.slice(1);if(!h)return null;let j=JSON.parse(decodeURIComponent(h));let d={name:j.n||'',bio:j.b||'',phrases:(j.p||[]).map(i=>PHRASES[i]).filter(Boolean),links:{},effects:{},musicLink:j.ml||'',videoLink:j.vl||'',photoZoom:j.z||100,photoPos:j.po||'center'};SOCIALS.forEach(s=>{if(j.l&&j.l[s.k])d.links[s.id]=j.l[s.k]});VIBES.forEach(v=>{if(j.e&&j.e.includes(v.k))d.effects[v.id]=true});return d}catch(e){return null}}
-let cnt=parseInt(localStorage.getItem('boda_count')||'1247');cnt++;localStorage.setItem('boda_count',cnt);
-function fixLink(social,raw){let u=raw.trim().replaceAll('@','').replaceAll(' ','').toLowerCase();if(!u)return '';if(u.startsWith('http'))return raw.trim();if(u.includes('.')||u.includes('/'))return 'https://'+u;return social.base+u}
-function renderProfile(d){makeSkullsFires();let eff=d.effects||{};if(eff.snow)startFX('snow');else if(eff.fire)startFX('fire');let links='';SOCIALS.forEach(s=>{if(d.links&&d.links[s.id]){let u=fixLink(s,d.links[s.id]);links+=`<a class="link" style="color:${s.color};border-color:${s.color}" href="${u}" target="_blank" rel="noopener"><img src="${s.logo}">${s.name}<span style="margin-left:auto;color:#fff">↗ افتح</span></a>`}});let photoToShow=userPhoto;let av=photoToShow?`<div class="avatarWrap"><img src="${photoToShow}" style="transform:scale(${(d.photoZoom||100)/100});object-position:${d.photoPos||'center'}"></div>`:`<div class="avatarTxt">${(d.name||'B')[0].toUpperCase()}</div>`;let phHtml='';if(d.phrases&&d.phrases.length){let txt=d.phrases.join(' 💀 • ')+' 💀 • ';phHtml=`<div class="phraseMarquee"><div class="phraseTrack">${txt} ${txt}</div></div>`}let musicHtml=eff.music?`<audio controls loop style="width:100%"><source src="${d.musicLink||'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'}"></audio>`:'';let videoHtml=eff.video&&d.videoLink?`<video controls loop style="width:100%;border-radius:16px"><source src="${d.videoLink}"></video>`:'';document.getElementById('app').innerHTML=`<div class="logo">BODA <span>LINKS</span></div><div class="counter">🔥 ${cnt} People Used Boda Links</div><div style="font-size:55px;text-align:center">💀</div><h2 style="text-align:center">Tamam! Your Page Is Ready 🎉</h2>${av}<div class="nameBig">${d.name}</div>${phHtml}<p style="text-align:center;color:#ccc">${d.bio||''}</p>${musicHtml}${videoHtml}${links||'<p style="text-align:center;color:#ffaa00">لسه محطيتش لينكات</p>'}<button class="btn btn2" onclick="navigator.clipboard.writeText(location.href);alert('Copied!')">Copy Link - انسخ الرابط 🔗</button><button class="btn" onclick="location.href=location.origin+location.pathname">اعمل صفحتك انت كمان 🔥</button><p style="text-align:center;margin-top:10px">عايز صفحة زي دي؟ اعمل صفحتك مجانا في Boda Links - اي اسم، اي حد</p>`}
-function onPhoto(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(){userPhoto=r.result;localStorage.setItem('boda_my_photo',userPhoto);let w=document.getElementById('previewWrap');w.style.display='block';document.getElementById('previewImg').src=userPhoto;document.getElementById('cropBox').style.display='block'};r.readAsDataURL(f)}
-function updatePreview(){let img=document.getElementById('previewImg');if(img){img.style.transform='scale('+(photoZoom/100)+')';img.style.objectPosition=photoPos}}
-function showBuilder(){makeSkullsFires();let rows=SOCIALS.map(s=>`<div class="row" style="border-color:${s.color}"><img src="${s.logo}"><b style="color:${s.color}">${s.name}</b></div><input id="in-${s.id}" placeholder="اكتب اسمك انت هنا، مثلا ali123 او حط اللينك كامل">`).join('');let vibes=VIBES.map(v=>`<div class="row"><input type="checkbox" id="v-${v.id}" style="width:22px;height:22px"><span style="font-size:26px">${v.icon}</span><b>${v.name}</b></div>`).join('');let phHtml=PHRASES.map((p,i)=>`<label style="display:block;background:#002a12;border:2px solid #00ff88;border-radius:12px;padding:10px;margin:6px 0;color:#00ff88;font-weight:900"><input type="checkbox" class="phChk" value="${i}" style="width:20px;height:20px"> ${p}</label>`).join('');document.getElementById('app').innerHTML=`<div class="logo">BODA <span>LINKS</span></div><p style="text-align:center">Your Links - One Page - Free - لأي حد</p><div class="counter">🔥 ${cnt} People Used Boda Links</div><div class="card"><h2 style="text-align:center">Create Your Page - اعمل صفحتك انت</h2><label>Your Name - اسمك انت</label><input id="name" placeholder="اكتب اسمك انت هنا، مثلا Ali"><label>Bio</label><input id="bio" placeholder="اكتب حاجة عنك"><label>Your Photo - صورتك 📸</label><div class="upload"><p>دوس هنا واختار صورتك من الموبايل</p><input type="file" accept="image/*" onchange="onPhoto(event)"><div id="previewWrap" class="previewWrap"><img id="previewImg"></div></div><div id="cropBox" style="display:none;background:#0a1a12;padding:12px;border-radius:12px;margin-top:8px"><b>عدل صورتك عشان وشك يبان:</b><label>كبر / صغر الصورة:</label><input type="range" min="100" max="250" value="100" oninput="photoZoom=this.value;updatePreview()"><label>مكان وشك:</label><select onchange="photoPos=this.value;updatePreview()"><option value="center">في النص</option><option value="top">فوق - وشك فوق</option><option value="bottom">تحت</option></select></div><label style="font-weight:900;margin-top:12px;display:block">Choose Your Phrases - اختار جملك 💚 (اختار كذا واحدة وهتتحرك ورا بعض):</label>${phHtml}<label style="font-weight:900;display:block">1. Choose Your Socials - حط لينكاتك انت:</label>${rows}<label style="font-weight:900;display:block;color:#00e5ff">2. Choose Your Vibe - اختار الإثارة:</label>${vibes}<label>Music Link (optional)</label><input id="musicLink" placeholder="Paste music link"><label>Video Link (optional)</label><input id="videoLink" placeholder="Paste video link"><button class="btn" onclick="makePage()">Create My Page - اعمل صفحتي 🚀</button><div id="out"></div></div>`}
-function makePage(){let name=document.getElementById('name').value||'My Page';let bio=document.getElementById('bio').value||'';let musicLink=document.getElementById('musicLink').value||'';let videoLink=document.getElementById('videoLink').value||'';let p=[];document.querySelectorAll('.phChk:checked').forEach(c=>p.push(parseInt(c.value)));let l={};SOCIALS.forEach(s=>{let v=document.getElementById('in-'+s.id).value.trim();if(v)l[s.k]=v});let e='';VIBES.forEach(v=>{if(document.getElementById('v-'+v.id).checked)e+=v.k});let j={n:name,b:bio,p:p,l:l,e:e,ml:musicLink,vl:videoLink,z:photoZoom,po:photoPos};let hash='#'+encodeURIComponent(JSON.stringify(j));let full=location.origin+location.pathname+hash;document.getElementById('out').innerHTML=`<div style="background:#0f2a1a;padding:12px;border-radius:12px;margin-top:12px;text-align:center"><div style="font-size:40px">✅</div><b>تمام! خلصت يا ${name}!</b><p style="font-size:12px;color:#aaa">اللينك قصير، الصورة مش جواه</p><p style="word-break:break-all;font-size:12px;color:#00ff88">${full}</p><button class="btn btn2" onclick="navigator.clipboard.writeText('${full}');alert('Copied!')">Copy Link - انسخ الرابط 🔗</button><button class="btn" onclick="location.hash='${hash}';location.reload()">افتح صفحتي - Open My Page</button></div>`}
-let d=getData();if(d)renderProfile(d);else showBuilder();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>صفحتي - بودا</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0f0f0f;color:#fff;min-height:100vh;padding:15px}
+.top{max-width:450px;margin:auto;text-align:center}
+.logo{font-size:28px;font-weight:900;margin:10px 0 2px}
+.logo span{color:#25D366}
+.sub{color:#aaa;font-size:13px;margin-bottom:15px}
+.progress{display:flex;gap:5px;margin:10px 0 20px}
+.progress div{flex:1;height:6px;background:#333;border-radius:10px;overflow:hidden}
+.progress div.active{background:#25D366}
+.card{background:#1a1a1a;border-radius:18px;padding:15px;margin-bottom:15px;text-align:right}
+.card h3{font-size:17px;margin-bottom:10px}
+.apps{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.app{background:#222;border:2px solid #333;border-radius:14px;padding:12px;text-align:center;cursor:pointer}
+.app.selected{border-color:#25D366;background:#123524}
+.app .emo{font-size:30px}
+.app b{display:block;margin-top:5px;font-size:14px}
+.app small{color:#aaa;font-size:11px}
+.effects{display:flex;flex-direction:column;gap:10px}
+.eff{background:#222;border:2px solid #333;border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.eff.selected{border-color:#FE2C55;background:#2a1220}
+.eff b{font-size:15px}
+.eff small{color:#aaa;display:block;font-size:12px}
+input[type=text]{width:100%;background:#222;border:1px solid #333;color:#fff;padding:13px;border-radius:12px;margin-bottom:10px;font-size:14px;direction:ltr;text-align:left}
+input[type=text]::placeholder{color:#777}
+.btn{width:100%;background:#25D366;color:#fff;border:none;padding:15px;border-radius:25px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:5px}
+.btn2{background:#333;color:#fff}
+.btn:disabled{background:#333;color:#888}
+.hidden{display:none}
+.myPage{text-align:center}
+.avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(45deg,#25D366,#FE2C55);display:flex;align-items:center;justify-content:center;font-size:50px;margin:15px auto;border:3px solid #fff}
+.linkBtn{display:block;background:#fff;color:#000;text-decoration:none;padding:15px;border-radius:15px;margin:10px 0;font-weight:bold;font-size:16px}
+.linkBtn.tiktok{background:#000;color:#fff;border:1px solid #333}
+.linkBtn.insta{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff}
+.linkBtn.whats{background:#25D366;color:#fff}
+.linkBtn.face{background:#1877F2;color:#fff}
+.linkBtn.you{background:#FF0000;color:#fff}
+.badge{display:inline-block;background:#222;padding:6px 12px;border-radius:20px;font-size:12px;margin:3px}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="logo">بودا <span>BOODA</span></div>
+<div class="sub" id="stepText">الخطوة 1 من 3 - اختار تطبيقاتك</div>
+<div class="progress"><div class="active" id="p1"></div><div id="p2"></div><div id="p3"></div></div>
+
+<!-- الصفحة الاولى: اختار التطبيقات -->
+<div id="page1">
+<div class="card"><h3>1- اختار التطبيقات اللي عايزها في صفحتك 👇</h3>
+<div class="apps" id="appsList"></div>
+</div>
+<button class="btn" id="to2" disabled onclick="go2()">التالي ➜</button>
+</div>
+
+<!-- الصفحة التانية: اختار الاثارة -->
+<div id="page2" class="hidden">
+<div class="card"><h3>2- اختار الاثارة والشكل 🔥</h3>
+<div class="effects" id="effectsList"></div>
+</div>
+<div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="back1()">⬅ رجوع</button><button class="btn" style="flex:2" onclick="go3()">التالي ➜</button></div>
+</div>
+
+<!-- الصفحة التالتة: حط اللينكات -->
+<div id="page3" class="hidden">
+<div class="card"><h3>3- حط لينكاتك هنا 🔗</h3>
+<p style="color:#aaa;font-size:13px;margin-bottom:12px">حط لينك كل تطبيق اخترته، واللي مش عايزه سيبه فاضي</p>
+<div id="linksBox"></div>
+</div>
+<div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="back2()">⬅ رجوع</button><button class="btn" style="flex:2" onclick="finish()">تأكيد واعرض صفحتي ✅</button></div>
+</div>
+
+<!-- الصفحة الاخيرة: صفحتك -->
+<div id="pageFinal" class="hidden">
+<div class="myPage">
+<div class="avatar">👑</div>
+<h2>بودا BOODA</h2>
+<p style="color:#aaa;font-size:13px;margin:5px 0">هيبتنا مرفوعة وعلم 👑</p>
+<div id="myBadges"></div>
+<div id="myLinks"></div>
+<button class="btn btn2" onclick="editAgain()">✏️ تعديل صفحتي</button>
+<button class="btn" onclick="copyPage()">📋 انسخ لينك صفحتي</button>
+<p id="copyMsg" style="color:#25D366;font-size:13px;margin-top:8px"></p>
+</div>
+</div>
+
+</div>
+<script>
+let apps=[
+{id:'tiktok',name:'تيك توك',emo:'🎵',desc:'فيديوهاتي'},
+{id:'insta',name:'انستجرام',emo:'📸',desc:'صوري'},
+{id:'whats',name:'واتساب',emo:'💬',desc:'كلمني'},
+{id:'face',name:'فيسبوك',emo:'👍',desc:'صفحتي'},
+{id:'you',name:'يوتيوب',emo:'▶️',desc:'فيديوهات طويلة'},
+{id:'tele',name:'تليجرام',emo:'✈️',desc:'قناتي'},
+];
+let effects=[
+{id:'smoke',name:'💨 دخان خفيف',desc:'هادي وشيك'},
+{id:'fire',name:'🔥 نار',desc:'حماسي وقوي'},
+{id:'glitter',name:'✨ لمعة',desc:'بيلمع ويلفت'},
+{id:'shake',name:'📳 هزة',desc:'بيتهز مع الموسيقى'},
+{id:'calm',name:'😎 هادي من غير اثارة',desc:'نضيف وبسيط'},
+];
+let selectedApps=[];
+let selectedEffect='smoke';
+
+let appsList=document.getElementById('appsList');
+apps.forEach(a=>{
+  let d=document.createElement('div'); d.className='app'; d.id='app-'+a.id;
+  d.innerHTML=`<div class="emo">${a.emo}</div><b>${a.name}</b><small>${a.desc}</small>`;
+  d.onclick=()=>{
+    if(selectedApps.includes(a.id)){ selectedApps=selectedApps.filter(x=>x!==a.id); d.classList.remove('selected'); }
+    else{ selectedApps.push(a.id); d.classList.add('selected'); }
+    document.getElementById('to2').disabled = selectedApps.length===0;
+    document.getElementById('to2').innerText = selectedApps.length? `التالي ➜ (${selectedApps.length})` : 'التالي ➜';
+  };
+  appsList.appendChild(d);
+});
+
+let effectsList=document.getElementById('effectsList');
+effects.forEach(e=>{
+  let d=document.createElement('div'); d.className='eff'+(e.id==='smoke'?' selected':''); d.id='eff-'+e.id;
+  d.innerHTML=`<div><b>${e.name}</b><small>${e.desc}</small></div><div>${e.id==='smoke'?'✅':''}</div>`;
+  d.onclick=()=>{
+    selectedEffect=e.id;
+    document.querySelectorAll('.eff').forEach(el=>{el.classList.remove('selected'); el.querySelector('div:last-child').innerText='';});
+    d.classList.add('selected'); d.querySelector('div:last-child').innerText='✅';
+  };
+  effectsList.appendChild(d);
+});
+
+function go2(){ document.getElementById('page1').classList.add('hidden'); document.getElementById('page2').classList.remove('hidden'); document.getElementById('stepText').innerText='الخطوة 2 من 3 - اختار الاثارة'; document.getElementById('p2').classList.add('active'); }
+function back1(){ document.getElementById('page2').classList.add('hidden'); document.getElementById('page1').classList.remove('hidden'); document.getElementById('stepText').innerText='الخطوة 1 من 3 - اختار تطبيقاتك'; document.getElementById('p2').classList.remove('active'); }
+function go3(){
+  document.getElementById('page2').classList.add('hidden'); document.getElementById('page3').classList.remove('hidden');
+  document.getElementById('stepText').innerText='الخطوة 3 من 3 - حط لينكاتك';
+  document.getElementById('p3').classList.add('active');
+  let box=document.getElementById('linksBox'); box.innerHTML='';
+  selectedApps.forEach(id=>{
+    let a=apps.find(x=>x.id===id);
+    box.innerHTML+=`<label style="font-size:13px;display:block;margin-bottom:5px">${a.emo} لينك ${a.name}</label><input type="text" id="link-${id}" placeholder="مثال: https://tiktok.com/@booda">`;
+  });
+}
+function back2(){ document.getElementById('page3').classList.add('hidden'); document.getElementById('page2').classList.remove('hidden'); document.getElementById('stepText').innerText='الخطوة 2 من 3 - اختار الاثارة'; document.getElementById('p3').classList.remove('active'); }
+function finish(){
+  document.getElementById('page3').classList.add('hidden'); document.getElementById('pageFinal').classList.remove('hidden');
+  document.getElementById('stepText').innerText='صفحتك جاهزة 🎉';
+  let effName=effects.find(e=>e.id===selectedEffect).name;
+  document.getElementById('myBadges').innerHTML=`<span class="badge">${effName}</span> <span class="badge">👑 بودا</span>`;
+  let linksHtml='';
+  selectedApps.forEach(id=>{
+    let a=apps.find(x=>x.id===id);
+    let val=document.getElementById('link-'+id).value.trim();
+    if(!val) val='#';
+    linksHtml+=`<a class="linkBtn ${id}" href="${val}" target="_blank">${a.emo} ${a.name} - دوس هنا</a>`;
+  });
+  document.getElementById('myLinks').innerHTML=linksHtml;
+  window.scrollTo(0,0);
+}
+function editAgain(){ document.getElementById('pageFinal').classList.add('hidden'); document.getElementById('page1').classList.remove('hidden'); document.getElementById('stepText').innerText='الخطوة 1 من 3 - اختار تطبيقاتك'; }
+function copyPage(){ document.getElementById('copyMsg').innerText='اتنسخ ✅ ابعته لصحابك'; }
+</script>
+</body>
+</html>
