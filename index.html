@@ -17,7 +17,7 @@ body{background:#000;color:#fff;min-height:100vh;padding:15px;overflow-x:hidden}
 .card{background:#1a1a1a;border-radius:18px;padding:15px;margin-bottom:15px;text-align:right;border:1px solid #333}
 .card h3{font-size:17px;margin-bottom:10px}
 .apps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.app{background:#111;border:2px solid #444;border-radius:16px;padding:14px;text-align:center;cursor:pointer;box-shadow:0 0 0 #000;transition:.2s}
+.app{background:#111;border:2px solid #444;border-radius:16px;padding:14px;text-align:center;cursor:pointer}
 .app.selected{border-color:#25D366;background:#0f2a1a;box-shadow:0 0 15px #25D366;transform:scale(1.03)}
 .app .emo{font-size:32px}
 .app b{display:block;margin-top:5px;font-size:15px}
@@ -25,9 +25,7 @@ body{background:#000;color:#fff;min-height:100vh;padding:15px;overflow-x:hidden}
 .effects{display:flex;flex-direction:column;gap:10px}
 .eff{background:#111;border:2px solid #444;border-radius:14px;padding:13px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .eff.selected{border-color:#FE2C55;background:#2a1220;box-shadow:0 0 15px #FE2C55}
-.eff b{font-size:15px}
-.eff small{color:#aaa;display:block;font-size:12px}
-input[type=text]{width:100%;background:#222;border:2px solid #444;color:#fff;padding:13px;border-radius:12px;margin-bottom:10px;font-size:14px}
+input[type=text]{width:100%;background:#222;border:2px solid #444;color:#fff;padding:13px;border-radius:12px;margin-bottom:10px;font-size:15px}
 input[type=text]:focus{border-color:#25D366;outline:none}
 .btn{width:100%;background:#25D366;color:#fff;border:none;padding:15px;border-radius:25px;font-size:17px;font-weight:bold;cursor:pointer;margin-top:5px}
 .btn2{background:#333}
@@ -37,10 +35,6 @@ input[type=text]:focus{border-color:#25D366;outline:none}
 .sentence.selected{border-color:#25D366;background:#123524}
 .uploadBox{border:2px dashed #25D366;border-radius:16px;padding:20px;text-align:center;cursor:pointer;background:#111}
 .uploadBox img{width:110px;height:110px;border-radius:50%;object-fit:cover;display:none;margin:auto;border:3px solid #25D366}
-#uploadTxt{font-size:14px;margin-top:8px}
-.badge{display:inline-block;background:#222;padding:6px 12px;border-radius:20px;font-size:12px;margin:3px;border:1px solid #444}
-
-/* الصفحة الاخيرة */
 .finalWrap{position:relative;padding-top:10px}
 .skulls{font-size:32px;letter-spacing:6px;animation:skullFloat 1.2s infinite alternate}
 @keyframes skullFloat{from{transform:translateY(0)}to{transform:translateY(-8px) scale(1.1)}}
@@ -48,7 +42,6 @@ input[type=text]:focus{border-color:#25D366;outline:none}
 @keyframes fireMove{from{transform:scale(1);opacity:.7}to{transform:scale(1.25);opacity:1}}
 .avatarWrap{position:relative;width:160px;height:160px;margin:14px auto}
 .avatarWrap::before{content:'';position:absolute;inset:-12px;border-radius:50%;background:conic-gradient(#ff0000,#ff7b00,#ffe600,#ff0000);animation:spin 1.5s linear infinite}
-.avatarWrap::after{content:'';position:absolute;inset:-22px;border-radius:50%;border:2px dashed #ff5500;animation:spin 3s linear infinite reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .avatar{position:relative;width:160px;height:160px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;font-size:60px;overflow:hidden;border:5px solid #fff;z-index:2}
 .avatar img{width:100%;height:100%;object-fit:cover}
@@ -58,7 +51,7 @@ input[type=text]:focus{border-color:#25D366;outline:none}
 .followItem span{font-size:12px;color:#aaa}
 .frameBox{border:2px solid #FE2C55;background:#1a0a0a;border-radius:18px;padding:16px;margin:14px 0;box-shadow:0 0 25px rgba(254,44,85,.5)}
 .frameBox p{font-size:15px;line-height:2;font-weight:bold}
-.linkBtn{display:block;text-decoration:none;padding:16px;border-radius:16px;margin:10px 0;font-weight:bold;font-size:16px;text-align:center;border:2px solid #fff;box-shadow:0 0 15px rgba(255,255,255,.2)}
+.linkBtn{display:block;text-decoration:none;padding:16px;border-radius:16px;margin:10px 0;font-weight:bold;font-size:16px;text-align:center;border:2px solid #fff}
 .linkBtn.tiktok{background:#000;color:#fff}
 .linkBtn.insta{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);color:#fff}
 .linkBtn.whats{background:#25D366;color:#fff}
@@ -66,13 +59,12 @@ input[type=text]:focus{border-color:#25D366;outline:none}
 .linkBtn.you{background:#FF0000;color:#fff}
 .linkBtn.tele{background:#0088cc;color:#fff}
 .shareRow{display:flex;gap:8px;margin-top:12px}
-/* الاثارات الحقيقية */
 body.fx-fire .finalWrap{background:radial-gradient(circle,rgba(255,80,0,.25),transparent 60%)}
 body.fx-shake .finalWrap{animation:shake .3s infinite}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
 body.fx-glitter .finalWrap::after{content:'✨ ✨ ✨ ✨ ✨';position:absolute;top:0;left:0;right:0;animation:fireMove .8s infinite alternate}
-body.fx-smoke .finalWrap::before{content:'💨 💨 💨';position:absolute;top:20px;left:0;right:0;opacity:.6;animation:skullFloat 2s infinite alternate}
-.warn{background:#3a1a00;border:1px solid #ff7b00;color:#ffb347;padding:10px;border-radius:10px;font-size:13px;margin-bottom:10px}
+body.fx-smoke .finalWrap::before{content:'💨 💨 💨';position:absolute;top:20px;left:0;right:0;opacity:.6}
+.warn{background:#3a1a00;border:1px solid #ff7b00;color:#ffb347;padding:10px;border-radius:10px;font-size:13px;margin-bottom:10px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -81,24 +73,26 @@ body.fx-smoke .finalWrap::before{content:'💨 💨 💨';position:absolute;top:
 <div class="sub" id="stepText">الخطوة 1 من 4 - اختار تطبيقاتك</div>
 <div class="progress"><div class="active" id="p1"></div><div id="p2"></div><div id="p3"></div><div id="p4"></div></div>
 
-<div id="page1"><div class="card"><h3>1- اختار التطبيقات 👇 دوس عليها هتنور</h3><div class="apps" id="appsList"></div></div><button class="btn" id="to2" disabled onclick="showPage(2)">التالي ➜</button></div>
+<div id="page1"><div class="card"><h3>1- اختار التطبيقات 👇</h3><div class="apps" id="appsList"></div></div><button class="btn" id="to2" disabled onclick="showPage(2)">التالي ➜</button></div>
 
-<div id="page2" class="hidden"><div class="card"><h3>2- اختار الاثارة 🔥 اختار كذا واحدة، هتشتغل بجد</h3><div class="effects" id="effectsList"></div><div class="warn">💡 الاثارة هنا مش كلام، دي هتتنفذ على صفحتك في الاخر: نار حقيقية، دخان، لمعة، هزة</div></div><div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="showPage(1)">⬅ رجوع</button><button class="btn" style="flex:2" onclick="showPage(3)">التالي ➜</button></div></div>
+<div id="page2" class="hidden"><div class="card"><h3>2- اختار الاثارة 🔥</h3><div class="effects" id="effectsList"></div></div><div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="showPage(1)">⬅ رجوع</button><button class="btn" style="flex:2" onclick="showPage(3)">التالي ➜</button></div></div>
 
 <div id="page3" class="hidden">
 <div class="card"><h3>3- اسمك وصورتك والجمل 👑</h3>
-<label style="font-size:13px;display:block;margin-bottom:5px">اسمك</label><input type="text" id="myName" value="بودا BOODA" placeholder="اكتب اسمك">
+<label style="font-size:13px;display:block;margin-bottom:5px">اسمك</label><input type="text" id="myName" value="بودا BOODA">
 <label style="font-size:13px;display:block;margin-bottom:8px">صورتك - دوس على المربع</label>
-<div class="uploadBox" id="uploadBox">
-<img id="previewImg"><div id="uploadTxt">📸 دوس هنا واختار صورتك<br><small style="color:#aaa">هتظهر هنا على طول</small></div>
-<input type="file" id="pickImg" accept="image/*" hidden>
-</div>
+<div class="uploadBox" id="uploadBox"><img id="previewImg"><div id="uploadTxt">📸 دوس هنا واختار صورتك</div><input type="file" id="pickImg" accept="image/*" hidden></div>
 </div>
 <div class="card"><h3>اختار الجمل ✨</h3><div id="sentencesList"></div></div>
 <div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="showPage(2)">⬅ رجوع</button><button class="btn" style="flex:2" onclick="showPage(4)">التالي ➜</button></div>
 </div>
 
-<div id="page4" class="hidden"><div class="card"><h3>4- حط لينكاتك 🔗 مهم جدا</h3><div class="warn">⚠️ لازم تحط اللينك كامل، زي: https://tiktok.com/@booda <br>لو سيبته فاضي هيقولك 404</div><div id="linksBox"></div></div><div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="showPage(3)">⬅ رجوع</button><button class="btn" style="flex:2" onclick="finish()">تأكيد واعرض صفحتي ✅</button></div></div>
+<div id="page4" class="hidden">
+<div class="card"><h3>4- حط بياناتك بس 🔗 من غير لينكات</h3>
+<div class="warn">✅ اكتب الاسم او الرقم بس، وانا هعمل اللينك لوحدي، مش هتحط https ولا حاجة</div>
+<div id="linksBox"></div></div>
+<div style="display:flex;gap:8px"><button class="btn btn2" style="flex:1" onclick="showPage(3)">⬅ رجوع</button><button class="btn" style="flex:2" onclick="finish()">تأكيد واعرض صفحتي ✅</button></div>
+</div>
 
 <div id="pageFinal" class="hidden">
 <div class="finalWrap">
@@ -118,8 +112,15 @@ body.fx-smoke .finalWrap::before{content:'💨 💨 💨';position:absolute;top:
 
 </div>
 <script>
-let apps=[{id:'tiktok',name:'تيك توك',emo:'🎵',desc:'فيديوهاتي',ph:'https://tiktok.com/@اسمك'},{id:'insta',name:'انستجرام',emo:'📸',desc:'صوري',ph:'https://instagram.com/اسمك'},{id:'whats',name:'واتساب',emo:'💬',desc:'كلمني',ph:'https://wa.me/201000000000'},{id:'face',name:'فيسبوك',emo:'👍',desc:'صفحتي',ph:'https://facebook.com/اسمك'},{id:'you',name:'يوتيوب',emo:'▶️',desc:'فيديوهات طويلة',ph:'https://youtube.com/@اسمك'},{id:'tele',name:'تليجرام',emo:'✈️',desc:'قناتي',ph:'https://t.me/اسمك'}];
-let effects=[{id:'fire',name:'🔥 نار',desc:'نار حقيقية حوالين الصفحة'},{id:'smoke',name:'💨 دخان',desc:'دخان طاير فوق'},{id:'glitter',name:'✨ لمعة',desc:'لمعة بتتحرك'},{id:'shake',name:'📳 هزة',desc:'الصفحة بتتهز'}];
+let apps=[
+{id:'tiktok',name:'تيك توك',emo:'🎵',desc:'فيديوهاتي',label:'اسمك على تيك توك',ph:'مثال: booda',prefix:'https://www.tiktok.com/@'},
+{id:'insta',name:'انستجرام',emo:'📸',desc:'صوري',label:'اسمك على انستجرام',ph:'مثال: booda',prefix:'https://www.instagram.com/'},
+{id:'whats',name:'واتساب',emo:'💬',desc:'كلمني',label:'رقم الواتساب بس',ph:'مثال: 01012345678',prefix:'whats'},
+{id:'face',name:'فيسبوك',emo:'👍',desc:'صفحتي',label:'اسم صفحة الفيسبوك بس',ph:'مثال: booda',prefix:'https://www.facebook.com/'},
+{id:'you',name:'يوتيوب',emo:'▶️',desc:'فيديوهات طويلة',label:'اسم قناة اليوتيوب',ph:'مثال: booda',prefix:'https://www.youtube.com/@'},
+{id:'tele',name:'تليجرام',emo:'✈️',desc:'قناتي',label:'اسمك على تليجرام',ph:'مثال: booda',prefix:'https://t.me/'}
+];
+let effects=[{id:'fire',name:'🔥 نار',desc:'نار حقيقية'},{id:'smoke',name:'💨 دخان',desc:'دخان طاير'},{id:'glitter',name:'✨ لمعة',desc:'لمعة بتتحرك'},{id:'shake',name:'📳 هزة',desc:'الصفحة بتتهز'}];
 let sentences=["👑 هيبتنا مرفوعة وعلم","♡ واحد بعشرة من الزلم","🔥 إحنا الفعل واحنا الحسم","👑 امشي بظهري جيش وامام","❤️ راسك دايم مرفوع","💪 ما ترضى بضيم وظلم","✨ إحنا الصوت المسموع"];
 let selectedApps=[]; let selectedEffects=['fire']; let selectedSentences=[0,1,2,3]; let myImgUrl='';
 let appsList=document.getElementById('appsList');
@@ -128,40 +129,51 @@ let effectsList=document.getElementById('effectsList');
 effects.forEach(e=>{let d=document.createElement('div'); d.className='eff'+(e.id==='fire'?' selected':''); d.innerHTML=`<div><b>${e.name}</b><small>${e.desc}</small></div><div>${e.id==='fire'?'✅':''}</div>`; d.onclick=()=>{if(selectedEffects.includes(e.id)){selectedEffects=selectedEffects.filter(x=>x!==e.id); d.classList.remove('selected'); d.querySelector('div:last-child').innerText='';}else{selectedEffects.push(e.id); d.classList.add('selected'); d.querySelector('div:last-child').innerText='✅';}}; effectsList.appendChild(d);});
 let sList=document.getElementById('sentencesList');
 sentences.forEach((s,i)=>{let d=document.createElement('div'); d.className='sentence'+(selectedSentences.includes(i)?' selected':''); d.innerText=s; d.onclick=()=>{if(selectedSentences.includes(i)){selectedSentences=selectedSentences.filter(x=>x!==i); d.classList.remove('selected');}else{selectedSentences.push(i); d.classList.add('selected');}}; sList.appendChild(d);});
-// اصلاح الصورة - دوس على المربع كله
 document.getElementById('uploadBox').onclick=()=>{document.getElementById('pickImg').click();};
 document.getElementById('pickImg').onchange=e=>{
   let f=e.target.files[0]; if(!f) return;
   let r=new FileReader();
-  r.onload=()=>{myImgUrl=r.result; let im=document.getElementById('previewImg'); im.src=myImgUrl; im.style.display='block'; document.getElementById('uploadTxt').innerHTML='تم ✅ صورتك اتحطت<br><small>دوس تاني لو عايز تغيرها</small>'; alert('تمام يا بودا، الصورة اتحطت ✅');};
+  r.onload=()=>{myImgUrl=r.result; let im=document.getElementById('previewImg'); im.src=myImgUrl; im.style.display='block'; document.getElementById('uploadTxt').innerHTML='تم ✅ صورتك اتحطت';};
   r.readAsDataURL(f);
 };
 function showPage(n){
   ['page1','page2','page3','page4','pageFinal'].forEach(id=>document.getElementById(id).classList.add('hidden'));
   if(n===5){document.getElementById('pageFinal').classList.remove('hidden'); document.getElementById('stepText').innerText='صفحتك جاهزة 🎉'; startFakeFollowers(); return;}
   document.getElementById('page'+n).classList.remove('hidden');
-  let titles={1:'الخطوة 1 من 4 - اختار تطبيقاتك',2:'الخطوة 2 من 4 - اختار الاثارة',3:'الخطوة 3 من 4 - اسمك وصورتك والجمل',4:'الخطوة 4 من 4 - حط لينكاتك'};
+  let titles={1:'الخطوة 1 من 4 - اختار تطبيقاتك',2:'الخطوة 2 من 4 - اختار الاثارة',3:'الخطوة 3 من 4 - اسمك وصورتك والجمل',4:'الخطوة 4 من 4 - حط بياناتك'};
   document.getElementById('stepText').innerText=titles[n];
   for(let i=1;i<=4;i++) document.getElementById('p'+i).classList.toggle('active', i<=n);
-  if(n===4){let box=document.getElementById('linksBox'); box.innerHTML=''; selectedApps.forEach(id=>{let a=apps.find(x=>x.id===id); box.innerHTML+=`<label style="font-size:13px;display:block;margin-bottom:5px">${a.emo} لينك ${a.name}</label><input type="text" id="link-${id}" placeholder="${a.ph}">`;});}
+  if(n===4){
+    let box=document.getElementById('linksBox'); box.innerHTML='';
+    selectedApps.forEach(id=>{
+      let a=apps.find(x=>x.id===id);
+      box.innerHTML+=`<label style="font-size:14px;display:block;margin-bottom:5px;font-weight:bold">${a.emo} ${a.label}</label><input type="text" id="link-${id}" placeholder="${a.ph}"><small style="color:#aaa;display:block;margin-bottom:12px">اكتب ${a.id==='whats'?'الرقم بس من غير +20 ولا مسافات':'الاسم بس من غير لينك'}</small>`;
+    });
+  }
   window.scrollTo(0,0);
 }
-function fixLink(v){
-  v=v.trim(); if(!v) return '';
-  if(!v.startsWith('http')) v='https://'+v;
-  return v;
+function makeLink(id,val){
+  val=val.trim().replace('@','').replace(/\s/g,'');
+  let a=apps.find(x=>x.id===id);
+  if(id==='whats'){
+    let num=val.replace(/[^0-9]/g,'');
+    if(num.startsWith('0')) num='20'+num.substring(1);
+    if(!num.startsWith('20')) num='20'+num;
+    return 'https://wa.me/'+num;
+  }
+  return a.prefix+val;
 }
 function finish(){
   let missing=[];
   selectedApps.forEach(id=>{let v=document.getElementById('link-'+id).value.trim(); if(!v) missing.push(apps.find(x=>x.id===id).name);});
-  if(missing.length>0){alert('يا بودا، نسيت تحط لينك: '+missing.join(' و ')+' - حط اللينك عشان ميقولش 404'); return;}
+  if(missing.length>0){alert('يا بودا، نسيت تكتب: '+missing.join(' و ')); return;}
   document.body.className='';
   selectedEffects.forEach(id=>document.body.classList.add('fx-'+id));
   showPage(5);
   document.getElementById('finalName').innerText=document.getElementById('myName').value||'بودا';
   document.getElementById('finalSentences').innerHTML=selectedSentences.map(i=>`<p>${sentences[i]}</p>`).join('');
-  if(myImgUrl){document.getElementById('finalAvatar').innerHTML=`<img src="${myImgUrl}">`;} else {document.getElementById('finalAvatar').innerHTML='👑'; alert('خد بالك، انت محطتش صورة، حط صورتك في الخطوة 3');}
-  let html=''; selectedApps.forEach(id=>{let a=apps.find(x=>x.id===id); let val=fixLink(document.getElementById('link-'+id).value); html+=`<a class="linkBtn ${id}" href="${val}" target="_blank">${a.emo} ${a.name} - دوس هنا</a>`;});
+  if(myImgUrl){document.getElementById('finalAvatar').innerHTML=`<img src="${myImgUrl}">`;}
+  let html=''; selectedApps.forEach(id=>{let a=apps.find(x=>x.id===id); let val=document.getElementById('link-'+id).value; let link=makeLink(id,val); html+=`<a class="linkBtn ${id}" href="${link}" target="_blank">${a.emo} ${a.name} - دوس هنا</a>`;});
   document.getElementById('myLinks').innerHTML=html;
 }
 let fakeCount=128400;
